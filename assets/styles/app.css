@@ -1,0 +1,80 @@
+body {
+    background-color: skyblue;
+}
+/********** Template CSS **********/
+:root {
+    --primary: #06A3DA;
+    --secondary: #34AD54;
+    --light: #EEF9FF;
+    --dark: #093d80;
+    --black: #010d10;
+}
+
+.black {  background: #020919;}
+.mb-0 { color: #a1d2dd;}
+.mb-4 {    color: #a1ddcf;}
+.mb-2 {    color: #0d7f93;}
+.mb-3 {    color: #0d7f93;}
+.mb-4 {    color: #093e8a;}
+.mb-5 {    color: #093e8a;}
+
+
+
+.accordion {
+    background-color: #eee;
+    color: #121e1e;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: center;
+    outline: none;
+    font-size: 20px;
+    transition: 0.4s;
+    border-radius: 15px;
+    border-color: #0d7f93;
+}
+
+
+.active, .accordion:hover {
+    background-color: rgba(2, 9, 25, 0.25);
+}
+.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="name"],
+input[type="email"],
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+

@@ -1,0 +1,187 @@
+{# templates/main/companies.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Companies{% endblock %}
+
+{% block body %}
+
+    </aside>
+    <div class="flex flex-col flex-1 w-full">
+        <header class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
+            <div class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
+                <!-- Mobile hamburger -->
+                <button class="p-1 mr-5 -ml-1 rounded-md md:hidden focus:outline-none focus:shadow-outline-purple"
+                        @click="toggleSideMenu"
+                        aria-label="Menu">
+                    <svg
+                            class="w-6 h-6"
+                            aria-hidden="true"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                    >
+                        <path
+                                fill-rule="evenodd"
+                                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                                clip-rule="evenodd"
+                        ></path>
+                    </svg>
+                </button>
+
+                <!-- Theme toggler -->
+                <li class="flex">
+                    <button
+                            class="rounded-md focus:outline-none focus:shadow-outline-purple"
+                            @click="toggleTheme"
+                            aria-label="Toggle color mode"
+                    >
+                        <template x-if="!dark">
+                            <svg
+                                    class="w-5 h-5"
+                                    aria-hidden="true"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                            >
+                                <path
+                                        d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                                ></path>
+                            </svg>
+                        </template>
+                        <template x-if="dark">
+                            <svg
+                                    class="w-5 h-5"
+                                    aria-hidden="true"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                            >
+                                <path
+                                        fill-rule="evenodd"
+                                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                        clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </template>
+                    </button>
+            </div>
+        </header>
+        <main class="h-full overflow-y-auto">
+            <div class="container px-6 mx-auto grid">
+                <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                    Dashboard
+                </h2>
+                <!-- CTA -->
+                <a
+                        class="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                        href="https://github.com/estevanmaito/windmill-dashboard">
+                    <div class="flex items-center">
+
+                        <div class="flex items-center text-center">
+                            <h1 class="mb-0 align-bottom" style="font-size: 32px; line-height: 35px;">Оберіть компанію щоб почати замовлення</h1>
+                        </div>
+                    </div>
+                </a>
+                <!-- Cards -->
+                <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                    <!-- Card -->
+                    <a class="flex items-center p-4 text-sm font-semibold text-purple-100 bg-purple-600 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+                       href="/companies">
+                        <div class="p-3 mr-4  rounded-full ">
+                            <svg class="svg-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="9" fill="grey" />
+                                <path d="M16 6l-8 8-4-4" stroke="white" stroke-width="2" fill="none" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                Крок 1 вибрати компанію
+                            </p>
+                        </div>
+                    </a>
+                    <!-- Card -->
+                    <a class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                        <div class="p-3 mr-4  rounded-full ">
+                            <svg class="svg-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="9" fill="grey" />
+                                <path d="M16 6l-8 8-4-4" stroke="white" stroke-width="2" fill="none" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                Крок 2 вибрати Майстра
+                            </p>
+                        </div>
+                    </a>
+                    <!-- Card -->
+                    <a class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                        <div class="p-3 mr-4  rounded-full ">
+                            <svg class="svg-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="9" fill="grey" />
+                                <path d="M16 6l-8 8-4-4" stroke="white" stroke-width="2" fill="none" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                Крок 3 вибрати Сервіс
+                            </p>
+                        </div>
+                    </a>
+                    <!-- Card -->
+                    <a class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                        <div class="p-3 mr-4  rounded-full ">
+                            <svg class="svg-icon" fill="currentColor" viewBox="0 0 20 20">
+                                <circle cx="10" cy="10" r="9" fill="grey" />
+                                <path d="M16 6l-8 8-4-4" stroke="white" stroke-width="2" fill="none" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                                Крок 4 виберіть тайм слот
+                            </p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- New Table -->
+                <div class="w-full overflow-hidden rounded-lg shadow-xs">
+                    <div class="w-full overflow-x-auto">
+                        <table class="w-full whitespace-no-wrap">
+                            <thead>
+                            <tr
+                                    class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
+                            >
+                                <th class="px-4 py-3">Компанія</th>
+                                <th class="px-4 py-3">Опис</th>
+                                <th class="px-4 py-3">Адреса</th>
+                            </tr>
+                            </thead>
+                            {% for company in companies %}
+                                <tr class="text-gray-700 dark:text-gray-400">
+                                    <td class="px-4 py-3">
+                                        <form method="post" action="{{ path('master', {'id': company.id}) }}">
+                                            <button type="submit" class="flex items-center text-sm">
+                                                <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
+                                                    <div class="absolute inset-0 rounded-full shadow-inner"
+                                                         aria-hidden="true"></div>
+                                                </div>
+                                                <div>
+                                                    <p class="font-semibold">{{ company.name }}</p>
+                                                </div>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td class="px-4 py-3 text-sm">
+                                        {{ company.description }}
+                                    </td>
+                                    <td class="px-4 py-3 text-xs">
+        <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+            {{ company.address }}
+        </span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+
+        </main>
+
+    </div>
+
+{% endblock %}

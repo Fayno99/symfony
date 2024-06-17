@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+    {% endblock %}
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        .accordion .card-header {
+            cursor: pointer;
+        }
+    </style>
+
+
+</head>
+<body>
+<div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
+    <!-- Desktop sidebar -->
+    <aside  class="z-20 hidden w-20 overflow-y-auto bg-white dark:bg-gray-800 md:block flex-shrink-0"   >
+        <div class="py-4 text-gray-500 dark:text-gray-400">
+            <a class="ml-2 text-lg font-bold text-gray-800 dark:text-gray-200"    href="/companies" >
+            </a>
+        <div>
+    </aside>
+    <!-- Mobile sidebar -->
+
+    <aside
+            class="fixed inset-y-0 z-20 flex-shrink-0 w-64 mt-16 overflow-y-auto bg-white dark:bg-gray-800 md:hidden"
+            x-show="isSideMenuOpen"
+            x-transition:enter="transition ease-in-out duration-150"
+            x-transition:enter-start="opacity-0 transform -translate-x-20"
+            x-transition:enter-end="opacity-100"
+            x-transition:leave="transition ease-in-out duration-150"
+            x-transition:leave-start="opacity-100"
+            x-transition:leave-end="opacity-0 transform -translate-x-20"
+            @click.away="closeSideMenu"
+            @keydown.escape="closeSideMenu"
+    >
+        <div class="py-4 text-gray-500 dark:text-gray-400">
+
+{% block body %}{% endblock %}
+        </div>
+
+    </aside>
+</div>
+
+<script>
+    function data() {
+        function getThemeFromLocalStorage() {
+            if (window.localStorage.getItem('dark')) {
+                return JSON.parse(window.localStorage.getItem('dark'))
+            }
+            return (
+                !!window.matchMedia &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches
+            )
+        }
+        function setThemeToLocalStorage(value) {
+            window.localStorage.setItem('dark', value)
+        }
+        return {
+            dark: getThemeFromLocalStorage(),
+            toggleTheme() {
+                this.dark = !this.dark
+                setThemeToLocalStorage(this.dark)
+            },
+            isSideMenuOpen: false,
+            toggleSideMenu() {
+                this.isSideMenuOpen = !this.isSideMenuOpen
+            },
+            closeSideMenu() {
+                this.isSideMenuOpen = false
+            },
+            isNotificationsMenuOpen: false,
+            toggleNotificationsMenu() {
+                this.isNotificationsMenuOpen = !this.isNotificationsMenuOpen
+            },
+            closeNotificationsMenu() {
+                this.isNotificationsMenuOpen = false
+            },
+            isProfileMenuOpen: false,
+            toggleProfileMenu() {
+                this.isProfileMenuOpen = !this.isProfileMenuOpen
+            },
+            closeProfileMenu() {
+                this.isProfileMenuOpen = false
+            },
+            isPagesMenuOpen: false,
+            togglePagesMenu() {
+                this.isPagesMenuOpen = !this.isPagesMenuOpen
+            },
+            // Modal
+            isModalOpen: false,
+            trapCleanup: null,
+            openModal() {
+                this.isModalOpen = true
+                this.trapCleanup = focusTrap(document.querySelector('#modal'))
+            },
+            closeModal() {
+                this.isModalOpen = false
+                this.trapCleanup()
+            },
+        }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    });
+
+
+
+
+
+</script>
+
+</body>
+</html>
+
+

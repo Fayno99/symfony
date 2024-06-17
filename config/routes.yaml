@@ -1,0 +1,13 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+client_add:
+    path: '/client/add'
+    controller: App\Controller\ClientController::addClient
+    methods: [POST]
+
+index:
+    path: /
+    controller: App\Controller\MainController::companies
